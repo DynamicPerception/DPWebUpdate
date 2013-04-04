@@ -8,7 +8,8 @@ HEADERS += \
     core/Dialogs/aboutdialog.h \
     core/Utilities/singleton.h \
     core/Dialogs/updatedialog.h \
-    core/AVRRunner/avrrunner.h
+    core/AVRRunner/avrrunner.h \
+    core/Dialogs/infodialog.h
 
 SOURCES += \
     core/Config/config.cpp \
@@ -19,11 +20,13 @@ SOURCES += \
     core/Dialogs/confirmdialog.cpp \
     core/Dialogs/aboutdialog.cpp \
     core/Dialogs/updatedialog.cpp \
-    core/AVRRunner/avrrunner.cpp
+    core/AVRRunner/avrrunner.cpp \
+    core/Dialogs/infodialog.cpp
 
 FORMS += \
     core/Dialogs/errordialog.ui \
     core/Dialogs/confirmdialog.ui \
     core/Dialogs/aboutdialog.ui \
-    core/Dialogs/updatedialog.ui
+    core/Dialogs/updatedialog.ui \
+    core/Dialogs/infodialog.ui
 

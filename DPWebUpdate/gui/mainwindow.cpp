@@ -78,6 +78,7 @@ void MainWindow::_avrDone(bool p_stat) {
         ui->actLabel->setText("Upload Failed");
 
     ui->actProgress->setValue(4);
+    ui->updateButton->setEnabled(true);
 }
 
 void MainWindow::_avrStatus(AVRRunner::Status p_stat) {
@@ -151,6 +152,26 @@ void MainWindow::on_actionAbout_triggered() {
     about.exec();
 }
 
+
+void MainWindow::on_deviceInfoButton_clicked() {
+
+    QString info = m_devices.at(m_curDevice).deviceDesc;
+    QString name = m_devices.at(m_curDevice).deviceName;
+
+    InfoDialog show(name, info, this);
+    show.exec();
+}
+
+void MainWindow::on_versionInfoButton_clicked() {
+    QList<QString> upds = m_devices.at(m_curDevice).deviceUpdates.keys();
+    QString        name = upds.at(m_curUpdate);
+    QString        info = m_devices.at(m_curDevice).deviceUpdates.value(name).updateDesc;
+
+    InfoDialog show(name, info, this);
+    show.exec();
+
+}
+
 void MainWindow::on_outputButton_clicked() {
     if( ! m_outputHidden ) {
         ui->outputText->hide();
@@ -187,6 +208,7 @@ void MainWindow::on_updateButton_clicked() {
     file = UpdateIndex::localPath(file);
 
     m_avr->run(params, port, file);
+    ui->updateButton->setEnabled(false);
 }
 
 void MainWindow::on_portCombo_currentIndexChanged(int p_idx) {

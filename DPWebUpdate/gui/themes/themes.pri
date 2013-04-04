@@ -66,10 +66,10 @@ OTHER_FILES += \
      themes/DP-Blue/about.qss \
      themes/DP-Blue/confirm.qss \
      themes/DP-Blue/error.qss \
-     themes/DP-Blue/img \
      themes/DP-Blue/img/drop-down-sm-blue.png \
      themes/DP-Blue/img/small-blue-but-normal.png \
      themes/DP-Blue/img/small-gray-but-normal.png \
+     themes/DP-Blue/info.qss \
      themes/DP-Blue/main.qss \
      themes/DP-Blue/theme.ini \
      themes/DP-Blue/update.qss \

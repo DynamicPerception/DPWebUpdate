@@ -32,6 +32,7 @@
 #include "core/Dialogs/updatedialog.h"
 #include "core/Dialogs/confirmdialog.h"
 #include "core/Dialogs/aboutdialog.h"
+#include "core/Dialogs/infodialog.h"
 #include "core/AVRRunner/avrrunner.h"
 #include "core/Themer/singlethemer.h"
 
@@ -61,6 +62,8 @@ public slots:
     void on_versionCombo_currentIndexChanged(int p_idx);
     void on_outputButton_clicked();
     void on_portCombo_currentIndexChanged(int p_idx);
+    void on_deviceInfoButton_clicked();
+    void on_versionInfoButton_clicked();
 
         // actions
     void on_actionCheckforUpdates_triggered();

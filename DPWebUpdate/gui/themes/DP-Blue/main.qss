@@ -3,7 +3,7 @@
     padding: 5px;
 }
 
-QComboBox:drop-down {
+/*QComboBox:drop-down {
     border-image: url(themes/DP-Blue/img/drop-down-sm-blue.png);
     border: 0px transparent;
     width:20px;
@@ -32,7 +32,7 @@ QComboBox {
     border-bottom-left-radius: 6px;
     border: 1px solid;
 }
-
+*/
 #rescanButton {
     border-image: url(themes/DP-Blue/img/small-gray-but-normal.png);
     max-width: 60px;
@@ -51,6 +51,10 @@ QComboBox {
     padding:5px;
     max-height: 40px;
     min-height: 40px;
+}
+
+#updateButton:disabled {
+ border-image: url(themes/DP-Blue/img/small-gray-but-normal.png);
 }
 
 #deviceInfoButton, #versionInfoButton, #updateButton {
