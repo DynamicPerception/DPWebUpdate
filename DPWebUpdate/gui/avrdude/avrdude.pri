@@ -1,23 +1,35 @@
 
 win32 {
 
+    OTHER_FILES += \
+        avrdude/win/avrdude.exe \
+        avrdude/win/avrdude.conf \
+        avrdude/win/libusb0.dll
+
+    AVR_FILES = \
+        win/avrdude.exe \
+        win/avrdude.conf \
+        win/libusb0.dll
+
     CONFIG(debug, debug|release) {
         DDIR = $$OUT_PWD/debug/avrdude
     }
     CONFIG(release, debug|release) {
         DDIR = $$OUT_PWD/release/avrdude
     }
+
+    AVR_FILES ~= s,/,\\,g
     DDIR ~= s,/,\\,g
 }
 
 macx {
     OTHER_FILES += \
-        avrdude/avrdude \
-        avrdude/avrdude.conf
+        avrdude/osx/avrdude \
+        avrdude/osx/avrdude.conf
 
     AVR_FILES = \
-        avrdude \
-        avrdude.conf
+        osx/avrdude \
+        osx/avrdude.conf
 
 
     DDIR = $$OUT_PWD/DPWebUpdate.app/Contents/MacOS/avrdude
@@ -29,6 +41,8 @@ defineTest(copyAvrDudeFiles) {
 
     for(FILE, files) {
         ORIG_FILE = $$FILE
+        win32:ORIG_FILE ~= s,\\win,,g
+        macx:ORIG_FILE ~= s,/osx,,g
         FILE = $$PWD/$$FILE
         AVRFILECOPY += @echo "Copying $$FILE" $$escape_expand(\\n\\t)
         # Replace slashes in paths with backslashes for Windows
@@ -40,7 +54,7 @@ defineTest(copyAvrDudeFiles) {
         }
 
         win32 {
-            AVRFILECOPY += xcopy /Y /E /I $$quote($$FILE) $$quote($$DDIR\\$$ORIG_FILE) $$escape_expand(\\n\\t)
+            AVRFILECOPY += $$QMAKE_COPY $$quote($$FILE) $$quote($$DDIR\\$$ORIG_FILE) $$escape_expand(\\n\\t)
         }
 
     }
@@ -57,6 +71,7 @@ avr_copy.commands = @echo "Copying AVR files to $$DDIR"  $$escape_expand(\\n\\t)
 
 win32 {
 
+  avr_copy.commands += mkdir $$DDIR $$escape_expand(\\n\\t)
   avr_copy.commands += $$AVRFILECOPY
 }
 
