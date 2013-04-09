@@ -53,7 +53,75 @@ macx {
 include(core/core.pri)
 include(avrdude/avrdude.pri)
 include(themes/themes.pri)
+include(update_index/update_index.pri)
 
+defineTest(deployFiles) {
+    files = $$1
+
+
+    for(FILE, files) {
+        FILE = $$FILE
+        DEPFILECOPY += @echo "Copying $$FILE" $$escape_expand(\\n\\t)
+        # Replace slashes in paths with backslashes for Windows
+        win32:FILE ~= s,/,\\,g
+
+
+        DEPFILECOPY += $$QMAKE_COPY $$quote($$FILE) $$quote($$DEPDIR) $$escape_expand(\\n\\t)
+    }
+    export(DEPFILECOPY)
+}
+
+
+win32 {
+    CONFIG(debug, debug|release) {
+        DEPDIR = $$OUT_PWD/debug
+    }
+    CONFIG(release, debug|release) {
+        DEPDIR = $$OUT_PWD/release
+    }
+    DEPDIR ~= s,/,\\,g
+
+
+
+    # only copy dlls and destroy source files for release versions
+ CONFIG(release, debug|release) {
+
+ contains(QT_VERSION, "4.8.1") {
+    DEP_FILES = \
+       $$[QT_INSTALL_BINS]\\QtCore4.dll \
+       $$[QT_INSTALL_BINS]\\QtGui4.dll \
+      $$[QT_INSTALL_BINS]\\QtNetwork4.dll \
+      $$[QT_INSTALL_BINS]\\..\\..\\..\\..\\..\\mingw\\bin\\mingwm10.dll \
+      $$[QT_INSTALL_BINS]\\..\\..\\..\\..\\..\\mingw\\bin\\libgcc_s_dw2-1.dll \
+      $$OUT_PWD\\..\\libs\\qextserialport\\src\\build\\qextserialport1.dll
+ }
+
+ !contains(QT_VERSION, "4.8.1") {
+
+    DEP_FILES = \
+       $$[QT_INSTALL_BINS]\\QtCore4.dll \
+      $$[QT_INSTALL_BINS]\\QtGui4.dll \
+      $$[QT_INSTALL_BINS]\\QtNetwork4.dll \
+      $$[QT_INSTALL_BINS]\\mingwm10.dll \
+      $$[QT_INSTALL_BINS]\\libgcc_s_dw2-1.dll \
+      $$OUT_PWD\\..\\libs\\qextserialport\\src\\build\\qextserialport1.dll
+  }
+
+
+    deployFiles($$DEP_FILES)
+
+    # need to deploy needed dll's, etc. more easily
+
+    deploy_copy.target = windep
+    deploy_copy.commands = @echo "GRPRO: Copying Required DLL files for Windows" $$escape_expand(\\n\\t)
+    deploy_copy.commands += $$DEPFILECOPY
+
+    QMAKE_EXTRA_TARGETS += deploy_copy
+    POST_TARGETDEPS += windep
+    QMAKE_POST_LINK += $$PWD\\clean_win.bat $$DEPDIR
+ }
+
+}
 
 # OSX-Specific Build Instructions
 

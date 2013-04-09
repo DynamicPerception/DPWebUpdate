@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<updateindex>
+
+ <devices>
+	<device id="1">
+		<name>MX2 Motion Controller</name>
+		<desc>Standard MX2 Motion Controller as Supplied by DP</desc>
+		<uploadParams>-C%c;-v;-patmega328p;-carduino;-b57600;-D;-P%p;-Uflash:w:%f:i</uploadParams>
+		<updates>
+			<update>
+				<version>0.92 Beta</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.92.hex</file>
+			</update>
+			<update>
+				<version>0.911 Beta</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.911.hex</file>
+			</update>
+			<update>
+				<version>0.90</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.90.hex</file>
+			</update>
+			<update>
+				<version>0.834</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.834.hex</file>
+			</update>
+		</updates>
+	</device>
+	<device id="2">
+		<name>DIY DollyShield w/ Arduino Uno</name>
+		<desc>DIY DollyShield Mounted on an Arduino Uno</desc>
+		<uploadParams>-C%c;-v;-patmega328p;-carduino;-D;-P%p;-Uflash:w:%f:i</uploadParams>
+		<updates>
+			<update>
+				<version>0.92 Beta</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.92.hex</file>
+			</update>
+			<update>
+				<version>0.911 Beta</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.911.hex</file>
+			</update>
+			<update>
+				<version>0.90</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.90.hex</file>
+			</update>
+			<update>
+				<version>0.834</version>
+				<desc>Adds a bunch of new features</desc>
+				<file>http://dynamicperception.com/dpwu/mx2/0.834.hex</file>
+			</update>
+		</updates>
+	</device>
+	<device id="3">
+		<name>NMx / nanoMoCo</name>
+		<desc>nanoMoCo Stepper Driver/Controller</desc>
+		<uploadParams>-C%c;-v;-patmega328p;-carduino;-D;-P%p;-Uflash:w:%f:i</uploadParams>
+		<updates>
+			<update>
+				<version>1.07 Beta</version>
+				<desc>First Public Beta Release, Required for use with Graffik 1.024</desc>
+				<file>http://dynamicperception.com/dpwu/nmx/1.07.hex</file>
+			</update>
+		</updates>
+	</device>
+ </devices>
+
+</updateindex>
+
+		

@@ -62,7 +62,6 @@ THEME_FILES = \
 
 
 OTHER_FILES += \
-     themes/DP-Blue \
      themes/DP-Blue/about.qss \
      themes/DP-Blue/confirm.qss \
      themes/DP-Blue/error.qss \

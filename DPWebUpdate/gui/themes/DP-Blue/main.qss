@@ -1,48 +1,32 @@
 #MainWindow {
     background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(253, 253, 253, 255), stop:1 rgba(208, 208, 208, 255));
-    padding: 5px;
+    margin:0px;
+    padding:0px;
 }
 
-/*QComboBox:drop-down {
-    border-image: url(themes/DP-Blue/img/drop-down-sm-blue.png);
+#logoFrame {
+    border-image:url(themes/DP-Blue/img/dp-logo.png);
     border: 0px transparent;
-    width:20px;
-    height:20px;
-    min-height:22px;
-    max-height:22px;
-    min-width:20px;
-    max-width:20px;
-    border: 0px transparent;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-   subcontrol-origin: margin;
-   subcontrol-position: top right;
+    min-height: 150px;
+    max-height: 150px;
+    max-width: 550px;
+    min-width:550px;
+    margin:0px;
+    padding:0px;
 }
 
-QComboBox {
-    min-height: 20px;
-    min-width: 100px;
-    font: 12px "Lucida Sans";
-    margin-left: 5px;
-    padding-left: 5px;
-    border-radius: 8px;
-    border-top-right-radius: 9px;
-    border-bottom-right-radius: 9px;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
-    border: 1px solid;
-}
-*/
-#rescanButton {
-    border-image: url(themes/DP-Blue/img/small-gray-but-normal.png);
+/*#rescanButton {
     max-width: 60px;
     min-width: 60px;
-}
+    min-height: 20px;
+    max-height: 20px;
+}*/
 
-#deviceInfoButton, #versionInfoButton {
+#rescanButton, #deviceInfoButton, #versionInfoButton {
     max-width: 20px;
     min-width: 20px;
-
+    min-height: 20px;
+    max-height: 20px;
 }
 
 #updateButton {
@@ -53,30 +37,21 @@ QComboBox {
     min-height: 40px;
 }
 
-#updateButton:disabled {
- border-image: url(themes/DP-Blue/img/small-gray-but-normal.png);
-}
 
-#deviceInfoButton, #versionInfoButton, #updateButton {
-    border-image: url(themes/DP-Blue/img/small-blue-but-normal.png);
-}
+
 
 #rescanButton, #deviceInfoButton, #versionInfoButton, #updateButton {
     margin: 5px;
-    color: rgb(255,255,255);
-    min-height: 20px;
-    max-height: 20px;
+
 }
 
 #outputButton {
-    border-image: url(themes/DP-Blue/img/small-gray-but-normal.png);
-    margin: 5px;
-    color: rgb(255,255,255);
-    min-height: 20px;
-    max-height: 20px;
+    min-height: 30px;
+    max-height: 30px;
     max-width: 100px;
     min-width: 100px;
     padding: 5px;
+    margin-bottom: 5px;
 }
 
 

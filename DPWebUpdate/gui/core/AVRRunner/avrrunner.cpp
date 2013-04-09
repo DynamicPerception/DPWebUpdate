@@ -38,14 +38,42 @@ void AVRRunner::run(QString p_args, QString p_port, QString p_file) {
 }
 
 void AVRRunner::_readSTDERR() {
-    QByteArray content = m_proc->readAllStandardError();
+
+    QByteArray content;
+
+#ifdef Q_WS_WIN
+
+    QProcess::ProcessChannel wasChannel = m_proc->readChannel();
+    m_proc->setReadChannel(QProcess::StandardError);
+
+    content = m_proc->read(1024);
+    m_proc->setReadChannel(wasChannel);
+
+#else
+    content = m_proc->readAllStandardError();
+#endif
+
     qDebug() << "AVRRunner: Got STDERR:" << content;
     emit avrOutput(content);
     _checkOutput(content);
 }
 
 void AVRRunner::_readSTDOUT() {
-    QByteArray content = m_proc->readAllStandardOutput();
+
+    QByteArray content;
+
+#ifdef Q_WS_WIN
+
+    QProcess::ProcessChannel wasChannel = m_proc->readChannel();
+    m_proc->setReadChannel(QProcess::StandardOutput);
+
+    content = m_proc->read(1024);
+    m_proc->setReadChannel(wasChannel);
+
+#else
+    content = m_proc->readAllStandardOutput();
+#endif
+
     qDebug() << "AVRRunner: Got STDOUT:" << content;
     emit avrOutput(content);
     _checkOutput(content);
