@@ -90,6 +90,7 @@ win32 {
     DEP_FILES = \
        $$[QT_INSTALL_BINS]\\QtCore4.dll \
        $$[QT_INSTALL_BINS]\\QtGui4.dll \
+       $$[QT_INSTALL_BINS]\\QtXml4.dll \
       $$[QT_INSTALL_BINS]\\QtNetwork4.dll \
       $$[QT_INSTALL_BINS]\\..\\..\\..\\..\\..\\mingw\\bin\\mingwm10.dll \
       $$[QT_INSTALL_BINS]\\..\\..\\..\\..\\..\\mingw\\bin\\libgcc_s_dw2-1.dll \
@@ -101,6 +102,7 @@ win32 {
     DEP_FILES = \
        $$[QT_INSTALL_BINS]\\QtCore4.dll \
       $$[QT_INSTALL_BINS]\\QtGui4.dll \
+      $$[QT_INSTALL_BINS]\\QtXml4.dll \
       $$[QT_INSTALL_BINS]\\QtNetwork4.dll \
       $$[QT_INSTALL_BINS]\\mingwm10.dll \
       $$[QT_INSTALL_BINS]\\libgcc_s_dw2-1.dll \
