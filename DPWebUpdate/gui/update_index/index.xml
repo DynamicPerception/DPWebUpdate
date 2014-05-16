@@ -11,22 +11,22 @@
 			<update>
 				<version>0.92 Beta</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.92.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.92.hex</file>
 			</update>
 			<update>
 				<version>0.911 Beta</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.911.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.911.hex</file>
 			</update>
 			<update>
 				<version>0.90</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.90.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.90.hex</file>
 			</update>
 			<update>
 				<version>0.834</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.834.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.834.hex</file>
 			</update>
 		</updates>
 	</device>
@@ -38,22 +38,22 @@
 			<update>
 				<version>0.92 Beta</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.92.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.92.hex</file>
 			</update>
 			<update>
 				<version>0.911 Beta</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.911.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.911.hex</file>
 			</update>
 			<update>
 				<version>0.90</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.90.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.90.hex</file>
 			</update>
 			<update>
 				<version>0.834</version>
 				<desc>Adds a bunch of new features</desc>
-				<file>http://dynamicperception.com/dpwu/mx2/0.834.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/mx2/0.834.hex</file>
 			</update>
 		</updates>
 	</device>
@@ -65,7 +65,7 @@
 			<update>
 				<version>1.07 Beta</version>
 				<desc>First Public Beta Release, Required for use with Graffik 1.024</desc>
-				<file>http://dynamicperception.com/dpwu/nmx/1.07.hex</file>
+				<file>http://download.dynamicperception.com/dpwu/nmx/1.07.hex</file>
 			</update>
 		</updates>
 	</device>

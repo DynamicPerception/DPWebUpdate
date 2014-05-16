@@ -67,7 +67,10 @@ void UpdateIndex::checkUpdates() {
 
     emit taskStarted("Checking Index File");
 
-    m_updRep     = m_net->head(QNetworkRequest(QUrl(m_url)));
+    QNetworkRequest request;
+    request.setUrl(QUrl(m_url));
+	request.setRawHeader( "User-Agent", "QNetworkRequest" ); //nginx gives a 406 reply to the default value Mozilla/5.0
+    m_updRep     = m_net->head(request);
 
 }
 
@@ -194,7 +197,10 @@ void UpdateIndex::_netReply(QNetworkReply *p_reply) {
             if( doGet ) {
                 // we need to get the index...
                 m_lastUpdate = lastMod;
-                m_updRep     = m_net->get(QNetworkRequest(QUrl(m_url)));
+				QNetworkRequest request;
+				request.setUrl(QUrl(m_url));
+				request.setRawHeader( "User-Agent", "QNetworkRequest" );
+                m_updRep     = m_net->get(request);
 
                 m_indexData.clear();
 
@@ -395,7 +401,10 @@ void UpdateIndex::_retrieveFile(QString p_path) {
         emit taskStarted("Retrieving Remote File: " + p_path);
 
         m_curFile   = lPath;
-        m_fileRep   = m_net->get(QNetworkRequest(QUrl(p_path)));
+		QNetworkRequest request;
+		request.setUrl(QUrl(p_path));
+		request.setRawHeader( "User-Agent", "QNetworkRequest" );
+        m_fileRep   = m_net->get(request);
         m_curRep    = m_fileRep;
 
         m_indexData.clear();

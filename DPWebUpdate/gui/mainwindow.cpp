@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QSortFilterProxyModel>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -57,10 +58,16 @@ void MainWindow::_prepInputs() {
     ui->deviceCombo->clear();
     ui->versionCombo->clear();
 
+	int i = 0;
     foreach(IndexItem item, m_devices) {
-        ui->deviceCombo->addItem(item.deviceName);
+        ui->deviceCombo->addItem(item.deviceName, QVariant(i++));
     }
-
+	
+	QSortFilterProxyModel* proxy = new QSortFilterProxyModel(ui->deviceCombo);
+	proxy->setSourceModel(ui->deviceCombo->model());
+	ui->deviceCombo->model()->setParent(proxy);
+	ui->deviceCombo->setModel(proxy);
+	ui->deviceCombo->model()->sort(0);
 
     if( m_devices.count() > 0 ) {
         ui->deviceCombo->setCurrentIndex(0);
@@ -115,6 +122,16 @@ void MainWindow::updateSerialPorts() {
     foreach( QextPortInfo port, ports ) {
 
         ui->portCombo->addItem(port.portName, QVariant(port.friendName));
+    }
+	
+	QSortFilterProxyModel* proxy = new QSortFilterProxyModel(ui->portCombo);
+	proxy->setSourceModel(ui->portCombo->model());
+	ui->portCombo->model()->setParent(proxy);
+	ui->portCombo->setModel(proxy);
+	ui->portCombo->model()->sort(0);
+	
+	if( ports.count() > 0 ) {
+        ui->portCombo->setCurrentIndex(0);
     }
 
     ui->portHintLabel->setText(ui->portCombo->itemData(ui->portCombo->currentIndex()).toString());
@@ -220,32 +237,40 @@ void MainWindow::on_portCombo_currentIndexChanged(int p_idx) {
 
 void MainWindow::on_deviceCombo_currentIndexChanged(int p_idx) {
 
-    qDebug() << "MainWindow: Got Device Change" << p_idx;
-    if( p_idx < 0 )
+	int deviceId = ui->deviceCombo->itemData(p_idx).toInt();
+    qDebug() << "MainWindow: Got Device Change" << deviceId;
+    if( deviceId < 0 )
         return;
 
-    if( m_devices.count() < p_idx )
+    if( m_devices.count() < deviceId )
         return;
 
-    m_curDevice = p_idx;
+    m_curDevice = deviceId;
 
     ui->versionCombo->clear();
 
-    QHash<QString, DeviceUpdate> upds = m_devices.at(p_idx).deviceUpdates;
+    QHash<QString, DeviceUpdate> upds = m_devices.at(deviceId).deviceUpdates;
 
+	int i = 0;
     foreach( QString version,  upds.keys() ) {
         qDebug() << "MainWindow: Found Version" << version;
-        ui->versionCombo->addItem(version);
+        ui->versionCombo->addItem(version, QVariant(i++));
     }
+	
+	QSortFilterProxyModel* proxy = new QSortFilterProxyModel(ui->versionCombo);
+	proxy->setSourceModel(ui->versionCombo->model());
+	ui->versionCombo->model()->setParent(proxy);
+	ui->versionCombo->setModel(proxy);
+	ui->versionCombo->model()->sort(0);
 
         // choose newest version
     ui->versionCombo->setCurrentIndex( upds.count() - 1 );
 
-    m_curUpdate = upds.count() - 1;
+	m_curUpdate = ui->versionCombo->itemData(upds.count() - 1).toInt();
 
 }
 
 void MainWindow::on_versionCombo_currentIndexChanged(int p_idx) {
     qDebug() << "MainWindow: Got New Version Index" << p_idx;
-    m_curUpdate = p_idx;
+    m_curUpdate = ui->versionCombo->itemData(p_idx).toInt();
 }
